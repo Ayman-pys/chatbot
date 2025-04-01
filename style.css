@@ -1,0 +1,122 @@
+* {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-decoration: none;
+    color: white;
+}
+
+body {
+    background-color: rgb(0, 0, 39);
+    height: 100vh; /* استخدام vh لضمان أن الارتفاع يأخذ الشاشة بالكامل */
+    width: 100%;
+    overflow-x: hidden;
+    font-family: Arial, sans-serif; /* إضافة خط افتراضي لتحسين التوافق */
+}
+
+header {
+    width: 100%;
+    padding: 2vw; /* استخدام وحدة نسبية */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 10px 10px 20px rgb(0, 0, 0);
+}
+
+header h2 {
+    font-size: clamp(20px, 5vw, 35px); /* ضبط الحجم بين قيمة دنيا وعليا */
+    font-weight: 600;
+    color: white;
+}
+
+header select {
+    margin-right: clamp(20px, 5vw, 90px); /* ضبط الهامش بناءً على حجم الشاشة */
+    padding: 1vw;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(0, 0, 39);
+    color: white;
+    font-size: clamp(16px, 3vw, 20px);
+    cursor: pointer;
+}
+
+h1 {
+    font-size: clamp(20px, 5vw, 35px); /* ضبط الحجم ليكون متجاوبًا */
+    text-align: center;
+    margin-top: 10vh; /* استخدام vh لتكون النسبة متجاوبة */
+}
+
+p {
+    text-align: center;
+    margin: 3vh 2vw; /* هامش نسبي */
+    font-size: clamp(18px, 4vw, 32px); /* حجم متجاوب */
+    font-family: monospace;
+}
+
+button {
+    padding: 1vh 2vw; /* وحدات نسبية */
+    border-radius: 25px;
+    border: none;
+    color: white;
+    background-color: rgb(0, 0, 39);
+    font-size: clamp(16px, 3vw, 20px);
+    cursor: pointer;
+    border: 3px solid gold;
+    display: block; /* لضمان التمركز */
+    margin: 0 auto; /* تمركز الزر أفقيًا */
+    width: fit-content; /* لضمان أن الزر لا يأخذ عرضًا زائدًا */
+}
+/* Media Queries للشاشات الصغيرة */
+@media (max-width: 768px) {
+    header {
+        padding: 3vw;
+        flex-direction: column; /* تحويل العناصر إلى عمودية على الشاشات الصغيرة */
+        text-align: center;
+    }
+
+    header h2 {
+        margin-bottom: 2vh;
+    }
+
+    header select {
+        margin-right: 0;
+        width: 80%; /* جعل العنصر يأخذ عرضًا نسبيًا */
+    }
+
+    h1 {
+        margin-top: 8vh;
+    }
+
+    p {
+        margin: 2vh 5vw;
+    }
+
+    button {
+        padding: 1.5vh 3vw;
+    }
+
+}
+
+/* للشاشات الصغيرة جدًا (مثل الهواتف) */
+@media (max-width: 480px) {
+    header {
+        padding: 4vw;
+    }
+
+    header select {
+        width: 90%;
+        padding: 2vw;
+    }
+
+    h1 {
+        margin-top: 6vh;
+    }
+
+    p {
+        margin: 1.5vh 3vw;
+    }
+
+    button {
+        padding: 2vh 4vw;
+    }
+}
