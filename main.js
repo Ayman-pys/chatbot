@@ -1,4 +1,4 @@
-const API_KEY = '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';
+const API_KEY = 'your-new-api-key-here'; // استبدل هذا بمفتاح API صالح من OpenRouter
 const API_URL = 'https://openrouter.ai/api/v1/chat/completions';
 
 const chatMessages = document.getElementById('chat-messages');
