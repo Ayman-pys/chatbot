@@ -5,24 +5,30 @@ const chatMessages = document.getElementById('chat-messages');
 const userInput = document.getElementById('user-input');
 const sendButton = document.getElementById('send-button');
 
-async function generateResponse(prompt) {
-    const response = await fetch(API_URL, {
-        method: 'POST',
-        headers: {
-            'Authorization': `Bearer ${API_KEY}`,
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            model: 'deepseek/deepseek-r1-distill-llama-70b:free',
-            messages: [{ role: 'user', content: prompt }]
-        })
+async function generateResponse() {
+  try {
+    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer YOUR_API_KEY_HERE' // Replace with your actual key
+      },
+      body: JSON.stringify({
+        // Add your payload here, e.g., { prompt: "Hello", max_tokens: 50 }
+      })
     });
 
-    if (!response.ok) throw new Error('Failed to generate response');
-    const data = await response.json();
-    return data.choices[0].message.content;
-}
+    if (!response.ok) {
+      throw new Error(`API request failed: ${response.status} ${response.statusText}`);
+    }
 
+    const data = await response.json();
+    return data; // Or process it as needed
+  } catch (error) {
+    console.error('Error in generateResponse:', error.message);
+    throw error; // Re-throw if needed by the caller
+  }
+}
 function addMessage(message, isUser) {
     const messageElement = document.createElement('div');
     messageElement.classList.add('message', isUser ? 'user-message' : 'bot-message');
